@@ -1,0 +1,14 @@
+[bot]
+nick = dbglordnikon
+channels = #dbglordnikon
+ping_timeout = 240
+server=127.0.0.1
+port=6667
+debug=true
+openweather_key=
+
+[websockets]
+port = 4242
+
+[web]
+port = 5242

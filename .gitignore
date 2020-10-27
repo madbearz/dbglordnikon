@@ -1,0 +1,5 @@
+bot.conf
+*.db
+*.pyc
+*.swp
+
