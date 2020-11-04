@@ -123,7 +123,8 @@ class MidnightRunListener(listeners.DayChangeListener):
 
 class LastListener(listeners.RegexListener):
     def __init__(self):
-        listeners.RegexListener.__init__(self, "lastlistener", u"(?:^|\s)(last|sist)(?:\s|$)")
+        listeners.RegexListener.__init__(self, "lastlistener",
+                                         u"(?:^|\s)(last|sist)(?:(?=(\?|\.|!|,|\s|$)))")
     def execute(self, msg):
         global lasts
 
@@ -143,7 +144,7 @@ class LastListener(listeners.RegexListener):
 class FirstListener(listeners.RegexListener):
     def __init__(self):
         listeners.RegexListener.__init__(self, "firstlistener",
-                                         u"(?:^|\s)(first|1st|först)(?:\s|$)")
+                                         u"(?:^|\s)(first|1st|först)(?:(?=(\?|\.|!|,|\s|$)))")
     def execute(self, msg):
         global firsts
 
