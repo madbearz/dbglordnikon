@@ -64,11 +64,6 @@ date = get_date()
 
 
 def date_check():
-    now = datetime.today().day
-    if date != now:
-        midnightRun()
-
-def date_check():
     global date
     now = get_date()
     return date != now
