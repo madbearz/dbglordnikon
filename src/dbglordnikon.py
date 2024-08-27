@@ -30,7 +30,7 @@ class DbgLordNikon(irc.Bot):
         self.conf = config.get_bot_config()
         irc.Bot.__init__(self, self.conf.get('bot', 'nick'))
         self.timeout = int(self.conf.get('bot', 'ping_timeout'))
-
+        self.ignoreList = self.conf.get('bot', 'ignore')
 
         self.addMessageHandler(Message.MESSAGE, DbgLordNikon.handlePrivMsg)
         self.addMessageHandler(Message.JOIN, DbgLordNikon.handlePrivMsg)
@@ -86,7 +86,7 @@ class DbgLordNikon(irc.Bot):
         self.listeners.run(msg)
 
     def handlePrivMsg(self, msg):
-        if msg.type == Message.MESSAGE:
+        if msg.type == Message.MESSAGE and msg.nick not in self.ignoreList:
             if self.cmdHandler.isCommand(msg):
                 self.cmdHandler.execute(msg)
         self.listeners.run(msg)
