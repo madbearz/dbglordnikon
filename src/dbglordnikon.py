@@ -86,7 +86,11 @@ class DbgLordNikon(irc.Bot):
         self.listeners.run(msg)
 
     def handlePrivMsg(self, msg):
-        if msg.type == Message.MESSAGE and msg.nick not in self.ignoreList:
+
+        if msg.nick in self.ignoreList:
+            return
+
+        if msg.type == Message.MESSAGE:
             if self.cmdHandler.isCommand(msg):
                 self.cmdHandler.execute(msg)
         self.listeners.run(msg)
